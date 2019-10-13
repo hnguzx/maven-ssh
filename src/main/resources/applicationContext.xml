@@ -2,17 +2,25 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!-- classpath 是指什么呢 -->
-    <context:property-placeholder location="classpath:db.properties"/>
+    <context:property-placeholder location="classpath:jdbc.properties"/>
 
     <!-- 使用annotation -->
     <context:annotation-config/>
     <!-- 使用annotation自动注册bean,并检查@Controller, @Service, @Repository注解已被注入 -->
-    <context:component-scan base-package="com.kevin.action"/>
-    <context:component-scan base-package="com.kevin.service"/>
-    <context:component-scan base-package="com.kevin.dao"/>
+    <context:component-scan base-package="cn.guzx.action"/>
+    <context:component-scan base-package="cn.guzx.service"/>
+    <context:component-scan base-package="cn.guzx.dao"/>
 
     <!-- data connection setting -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -67,7 +75,7 @@
 
                 <prop key="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</prop>
                 <prop key="hibernate.max_fetch_depth">3</prop>
-                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/TESTDB</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/flea_market</prop>
                 <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
             </props>
 
@@ -76,7 +84,13 @@
         <!-- 包扫描的方式加载注解类 -->
         <property name="packagesToScan">
             <list>
-                <value>com.kevin.entity</value>
+                <value>cn.guzx.entity</value>
+            </list>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>cn.guzx.entity.PasswordEntity</value>
+                <value>cn.guzx.entity.UserEntity</value>
             </list>
         </property>
     </bean>
