@@ -4,10 +4,17 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="sessionFactory" value="39293366-6d18-42e7-9345-c6b3e05db5c8" />
+          <unit-entry name="sessionFactory" value="d68185ef-c658-4066-96ae-b629aa6849cf" />
         </datasource-map>
         <naming-strategy-map />
       </configuration>
+    </facet>
+    <facet __external-system-id="Maven" type="web" name="Web">
+      <facet type="Struts2" name="Struts 2">
+        <configuration>
+          <propertiesKeys disabled="false" />
+        </configuration>
+      </facet>
     </facet>
   </component>
 </module>

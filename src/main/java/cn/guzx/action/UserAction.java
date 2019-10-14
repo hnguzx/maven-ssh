@@ -15,13 +15,14 @@ import java.util.Map;
 
 @Controller("userAction")
 @Scope("prototype")
-public class UserAction extends ActionSupport {
-    private UserService userService;
+public class UserAction extends ActionSupport{
 
     private UserEntity user;
 
+    private UserService userService;
+
     public UserEntity getUser() {
-        return user;
+        return this.user;
     }
 
     public void setUser(UserEntity user) {
@@ -29,6 +30,9 @@ public class UserAction extends ActionSupport {
     }
 
     public String login() {
+        System.out.println("收到请求！！！！！！！！！！！！！！！！！！！！！！！");
+        user.setUsername("guzx");
+        user.setPhone("13089414342");
         if(userService.login(user)) {
             Map session = ActionContext.getContext().getSession();
             session.put("user", user);
